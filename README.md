@@ -1,7 +1,7 @@
 
 
 # firstNode
-
+ 第一个Node项目
 
 
 ## Usage
@@ -19,4 +19,4 @@ Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
 
 Nodeclipse is free open-source project that grows with your contributions.
 
-GitHub：https://github.com/muyeqinshimingyue/firstNode.git
+GitHub  : https://github.com/muyeqinshimingyue/firstNode.git
