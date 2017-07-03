@@ -1,5 +1,5 @@
 /**
- * http://usejsdoc.org/
+ *   测试 覆盖exports对象 
  */
 
 // 获取js 模块

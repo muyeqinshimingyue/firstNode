@@ -1,7 +1,7 @@
 /**
- *  测试Node.js模块   hello 模块  
+ *  测试Node.js模块   hello 模块  覆盖exports对象
  *  
- *  覆盖exports对象，
+ *  
  *  因为exports对象是Node.js模块的公共接口，所以模块都会有一个exports的接口，
  *  现在定义一个模块直接覆盖exports对象，让外部调用方法直接获取模块定义的对象
  *  
