@@ -31,5 +31,5 @@ function Hello(){
  * 它本身会在模块执行结束后释放，但  module  不会，
  * 因此只能通过指定module.exports  来改变访问接口
  * 
- */
-module.exports= Hello;
+ */ 
+module.exports= Hello;  //  只支持一个=函数的
