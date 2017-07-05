@@ -15,6 +15,7 @@ var name ;
  * 因此只能通过指定module.exports  来改变访问接口
  * 
  */
+
 exports.setName = function ( username ){
 	name = username;
 };
