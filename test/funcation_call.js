@@ -18,7 +18,7 @@ http.createServer( function( request , response ) {
 		
 		others.fun3(response);  // 调用其他模块的函数(多函数)
 		
-		others['fun4'](response);  // 调用其他模块的函数(多函数) 使用字符串调用方法，该种方式还可以使用变量
+		others['fun4'](response);  // 调用其他模块的函数(多函数) 使用字符串调用方法，该种方式还可以使用变量 *****
 		
 		response.end();	 // 不写则没有http协议尾,但写了会产生两次访问  
 	}

@@ -14,6 +14,8 @@ function Hello(){
 	
 	var name;  // 对象属性
 	
+	var num ;
+	
 	this.setName = function ( username){
 		name = username;
 	};

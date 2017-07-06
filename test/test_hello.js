@@ -15,3 +15,5 @@ he2.setName("123123")
 
 he.sayHello();
 he2.sayHello();
+
+console.log( Hello.num );
