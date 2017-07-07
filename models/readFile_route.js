@@ -1,5 +1,7 @@
 /**
  *  编写读取文件的路由模块
+ *  分为同步读取和异步读取
+ *  
  */
 var readFile = require("../models/read_file");
 module.exports = {
