@@ -3,7 +3,7 @@
  *  分为同步读取和异步读取
  *  
  */
-var readFile = require("../models/read_file");
+var readFile = require("./read_file");
 module.exports = {
 	sync:function (res){  // 同步读取文件
 		/**

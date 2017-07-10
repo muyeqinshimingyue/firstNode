@@ -2,8 +2,8 @@
  *  测试 Node.js的函数调用
  */
 
-var otherFun = require("../models/function_other.js");  // 调用当前目录的父目录下models文件夹的 function_other.js 模块
-var others = require("../models/function_others.js");
+var otherFun = require("../models/function_/function_other.js");  // 调用当前目录的父目录下models文件夹的 function_other.js 模块
+var others = require("../models/function_/function_others.js");
 var http = require("http");  // 获取http协议模块
 http.createServer( function( request , response ) {
 	response.writeHead(200,{'Content-Type':  'text/html;charset=utf-8'}); //编写返回头

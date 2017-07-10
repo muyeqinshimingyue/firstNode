@@ -4,7 +4,7 @@
 
 var http = require("http");
 var url = require("url");
-var readImgRoute = require("../models/readImg_route");
+var readImgRoute = require("../models/img/readImg_route");
 http.createServer(function(request,response){
 	response.writeHeader(200,{"content-type":"image/jpeg"});  // 设置头文件为 图片格式 "image/jpeg"
 	if( "/favicon.ico" != request.url ){

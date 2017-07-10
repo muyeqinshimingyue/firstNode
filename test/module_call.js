@@ -2,8 +2,8 @@
  *  测试Node.js模块调用
  *	
  */
-var User = require("../models/User");  // 调用User模块
-var Teacher = require("../models/Teacher");
+var User = require("../models/entity/User");  // 调用User模块
+var Teacher = require("../models/entity/Teacher");
 
 var http = require("http");  // 获取http协议模块
 http.createServer( function( request , response ) {

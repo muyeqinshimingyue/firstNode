@@ -8,7 +8,7 @@
 
 var http = require("http");
 var url = require("url");
-var readFileRoute = require("../models/readFile_route");   //  获取读取文件模块
+var readFileRoute = require("../models/file/readFile_route");   //  获取读取文件模块
 http.createServer(function (request,response){
 	response.writeHeader(200,{"Content-Type":"text/html;charset=utf-8"});
 	if( "/favicon.ico" != request.url ){
