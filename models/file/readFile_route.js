@@ -11,6 +11,13 @@ module.exports = {
 		 */
 		console.log("开始同步读取文件");
 		res.write("开始同步读取文件<br/>");
+		
+		/*
+		 * 	./ 是指 启动的JS文件所在路径的上一级路径（启动JS所在的文件夹路径）
+		 *   ../ 路径是相对于启动的JS文件所在路径上两级路径,不是当前JS的路径(require除外)，
+		 *   require的不同 ； require中的./ 指的是当前JS文件所在的上级目录
+		 *   一般推荐使用绝对路径，因为启动js的路径可能会变化
+		 */
 		var data = readFile.syncReadFile("../models/readFileSync.html"); // 同步读取文件，传入文件位置，(注意路径)
 		res.write("文件内容是：<br/>"+data+"<br/>");
 		res.write("<br/>同步读取文件完成");
