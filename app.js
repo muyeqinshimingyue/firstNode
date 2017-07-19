@@ -57,6 +57,8 @@ app.use(express.methodOverride());
 /*
  * 里边会创建一个路由map，把类似app.get、app.post等的所有路由的url和callback做一个映射保存，
  * 当req.url命中路由时执行相应的回调。如果不显式调用app.use(app.router);则会在第一条路由里边隐式调用。
+ * 
+ * 注意： 其与静态资源路由的位置
  */
 app.use(app.router);
 /*
@@ -73,16 +75,30 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler()); // errorHandler 是错误控制器
 }
 
-//  是一个路由控制器，用户如果访问“ / ”路径，则由  routes.index来控制。
-app.get('/', routes.index);
+/*
+ * 是一个路由控制器，用户如果访问“ / ”路径，则由  routes.index来控制。
+ * Express 在处理路由规则时，会优先匹配先定义的路由规则，因此后面相同的规则被屏蔽，
+ * 但是可以通过 回调函数的第三个参数next,手动执行下一个匹配规则
+ * 
+ */  
+app.all('/', routes.index);  // 将所有方式的对 ‘/’请求,都交给 routes.index 处理
+app.get('/time', routes.time); // get 请求
 app.get('/users', user.list);
+app.all('/users/:username',function(req,res,next){
+	 console.log("登录用户是：%s", req.params.username );
+	 next();  // 通过调用 回调函数的第三个参数next，执行下一个拦截
+});
+app.get('/users/:username', user.username);  // 使用变量路径进行匹配   注意：此时的匹配会被上一个 /users/:username 拦截，而不会执行
+app.get( '\/user\/([\^/]+)\/?' ,user.reg );  // 使用正则表达式匹配路径
 
 
 http.createServer(app).listen(app.get('port'), function(){
 	var port = this.address().port;
 	var host = this.address().address;
 	console.log('Express server listening on port ' + app.get('port'));
-	console.log('%s:%s',port,host);
+	// console对象的上面5种方法，都可以使用printf风格的占位符。不过，占位符的种类比较少，只支持字符（%s）、整数（%d或%i）、浮点数（%f）和对象（%o）四种。
+	console.log('%s:%s',port,host); 
+	console.log('服务器对象是：%o',this.address() );
 	console.log('当前文件运行的路径是：%s',__dirname);
 });
 

@@ -1,7 +1,16 @@
+//- extends 表示继承 layout.jade模板 类似于静态引入   include 引入其他模板，类似于动态引入
 extends layout
+ 
 
 block content
+  style .abc{background-color:red;}
   h1= title
   p Welcome to #{title}
   a(href='http://www.baidu.com') aaa
+  br
   a(href='http://www.baidu.com') aaa
+  //- 在jade中  空格是有意义的 一般表示标签的内容  所以div#div中间是没有空格的
+  div#div.div a(href='') bbbb
+   br
+   a(href='') bbbb
+   <div id="abc" class='abc' >qqq</div>
