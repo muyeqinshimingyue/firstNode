@@ -64,6 +64,7 @@ app.use(express.bodyParser());
 app.use( bodyParser.json() );
 /*
  *  此路由的作用是：对所有路径进行拦截，如果请求的参数是urlencoded的方式时，进行处理
+ *
  */
 app.use( bodyParser.urlencoded({
 	extended:false
