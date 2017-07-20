@@ -7,11 +7,12 @@
  *   可查阅 connect 文档：http://www.senchalabs.org/connect/
  *   和 express 官方文档：http://expressjs.com/api.html 了解更多内容。
  */
-var express = require('express')   
+var express = require('express')   // 导入express框架
   , routes = require('./routes')  // routes  是一个文件夹形式的本地模块
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , bodyParser = require("body-parser");
 
 var app = express();
 
@@ -35,10 +36,13 @@ app.set('view engine', 'jade'); // 设置视图模版引擎为 jade
 /* 
  *  Express 依赖于 connect，提供了大量的中间件，可以通过  app.use 启用
  *  
- * app.use([path], function)：使用中间件 function，可选参数path默认为"/" 
+ * app.use([path], function)：使用中间件 function，可选参数path默认为"/"  
  * app.use(express.favicon())：connect 内建的中间件，使用默认的 favicon 图标，
  * 如果想使用自己的图标，需改为app.use(express.favicon(__dirname + '/public/images/favicon.ico')); 
  * 这里我们把自定义的 favicon.ico 放到了 public/images 文件夹下。
+ *  
+ * app.use 其实质是路由  如果第一个参数不传入，就表示对所有的路径进行拦截
+ * 此处就是表示 对 favicon.ico 的访问进行拦截
  */
 app.use(express.favicon());
 /*
@@ -50,8 +54,22 @@ app.use(express.logger('dev'));
 /* 
  * bodyParser作用是对post请求的请求体进行解析
  * bodyParser用于解析客户端请求的body中的内容,内部使用JSON编码处理,url编码处理以及对于文件的上传处理
+ * 
  */
 app.use(express.bodyParser());
+
+/*
+ * 此路由的作用是：对所有路径进行拦截，如果该请求是post请求，并且content-type是json时，将其请求参数转换为json对象
+ */
+app.use( bodyParser.json() );
+/*
+ *  此路由的作用是：对所有路径进行拦截，如果请求的参数是urlencoded的方式时，进行处理
+ */
+app.use( bodyParser.urlencoded({
+	extended:false
+}) );
+
+
 // 方法覆盖  可以将post和get请求转换成put delete请求    用于支持定制的 HTTP 方法
 app.use(express.methodOverride());
 /*
