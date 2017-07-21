@@ -119,6 +119,7 @@ http.createServer(app).listen(app.get('port'), function(){
 	console.log('%s:%s',port,host); 
 	console.log('服务器对象是：%o',this.address() );
 	console.log('当前文件运行的路径是：%s',__dirname);
+    console.log('服务器运行路径是：http://localhost:%s', app.get('port') );
 });
 
 
