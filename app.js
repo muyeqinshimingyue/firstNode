@@ -111,6 +111,13 @@ app.get('/users/:username', user.username);  // 使用变量路径进行匹配  
 app.get( '\/user\/([\^/]+)\/?' ,user.reg );  // 使用正则表达式匹配路径
 
 
+/*
+ *   以下采取模块化路由操作
+ *   以避免所有的路由都放在同一个文件中
+ */
+app.all( '/class', require('./routes/class_route') );
+
+
 http.createServer(app).listen(app.get('port'), function(){
 	var port = this.address().port;
 	var host = this.address().address;
